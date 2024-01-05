@@ -9,6 +9,7 @@ import { dateFromDateTime } from '@schedule-x/shared/src/utils/stateless/time/fo
 import { getTimeGridEventCopyElementId } from '@schedule-x/shared/src/utils/stateless/strings/selector-generators'
 import TimeGridDragHandler from '@schedule-x/shared/src/interfaces/drag-and-drop/time-grid-drag-handler.interface'
 import { replaceOriginalWithCopy } from './utils/stateless/replace-original-with-copy'
+import { getTimePointsPerPixel } from '@schedule-x/shared/src/utils/stateless/calendar/time-points-per-pixel'
 
 export default class TimeGridDragHandlerImpl implements TimeGridDragHandler {
   private readonly dayWidth: number
@@ -54,10 +55,7 @@ export default class TimeGridDragHandlerImpl implements TimeGridDragHandler {
   }
 
   private timePointsPerPixel(): number {
-    return (
-      this.$app.config.timePointsPerDay /
-      this.$app.config.weekOptions.gridHeight
-    )
+    return getTimePointsPerPixel(this.$app)
   }
 
   private handleVerticalMouseMove(currentIntervalDiff: number) {

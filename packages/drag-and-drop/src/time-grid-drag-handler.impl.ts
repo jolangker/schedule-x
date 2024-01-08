@@ -61,6 +61,7 @@ export default class TimeGridDragHandlerImpl implements TimeGridDragHandler {
   private handleVerticalMouseMove(currentIntervalDiff: number) {
     if (currentIntervalDiff === this.lastIntervalDiff) return
 
+    // todo: check if this can be simplified like in resizer plugin
     const pointsToAdd =
       currentIntervalDiff > this.lastIntervalDiff
         ? this.CHANGE_THRESHOLD_IN_TIME_POINTS
